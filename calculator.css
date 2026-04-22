@@ -1,0 +1,159 @@
+/* =========================================================================
+   NWRA S-Corp Calculator — scoped stylesheet
+   All rules live under .nwra-scorp-calculator-root so the plugin stays
+   isolated from the host theme's CSS.
+   ========================================================================= */
+
+.nwra-scorp-calculator-root {
+  /* Brand tokens */
+  --nwra-sc-navy: #13384F;
+  --nwra-sc-navy-mid: #1F5082;
+  --nwra-sc-blue: #448CCE;
+  --nwra-sc-blue-light: #D6E4F2;
+  --nwra-sc-blue-soft: #EEF3F9;
+  --nwra-sc-gold: #DD9E2D;
+  --nwra-sc-coral: #E5784B;
+  --nwra-sc-green: #008761;
+  --nwra-sc-green-light: #E0F2EA;
+  --nwra-sc-cream: #E6E5DD;
+  --nwra-sc-gray: #F0F0F0;
+  --nwra-sc-text: #242424;
+  --nwra-sc-white: #FFFFFF;
+
+  /* Typography + box model defaults */
+  font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+  color: var(--nwra-sc-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  line-height: 1.5;
+  box-sizing: border-box;
+}
+
+.nwra-scorp-calculator-root *,
+.nwra-scorp-calculator-root *::before,
+.nwra-scorp-calculator-root *::after {
+  box-sizing: border-box;
+}
+
+/* Reset common elements so host-theme rules don't leak in */
+.nwra-scorp-calculator-root h1,
+.nwra-scorp-calculator-root h2,
+.nwra-scorp-calculator-root h3,
+.nwra-scorp-calculator-root h4,
+.nwra-scorp-calculator-root h5,
+.nwra-scorp-calculator-root h6,
+.nwra-scorp-calculator-root p,
+.nwra-scorp-calculator-root ul,
+.nwra-scorp-calculator-root li,
+.nwra-scorp-calculator-root div,
+.nwra-scorp-calculator-root span,
+.nwra-scorp-calculator-root button,
+.nwra-scorp-calculator-root input,
+.nwra-scorp-calculator-root select,
+.nwra-scorp-calculator-root label {
+  font-family: inherit;
+  color: inherit;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.nwra-scorp-calculator-root ul {
+  list-style: disc;
+}
+
+.nwra-scorp-calculator-root h1,
+.nwra-scorp-calculator-root h2,
+.nwra-scorp-calculator-root h3,
+.nwra-scorp-calculator-root h4 {
+  line-height: 1.15;
+}
+
+.nwra-scorp-calculator-root button {
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.nwra-scorp-calculator-root input,
+.nwra-scorp-calculator-root select {
+  background: var(--nwra-sc-white);
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.nwra-scorp-calculator-root input:focus,
+.nwra-scorp-calculator-root select:focus,
+.nwra-scorp-calculator-root button:focus {
+  outline: none;
+}
+
+/* Hide number-input spinners */
+.nwra-scorp-calculator-root input[type="number"]::-webkit-inner-spin-button,
+.nwra-scorp-calculator-root input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.nwra-scorp-calculator-root input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* =========================================================================
+   Interactive states — hover + focus-visible
+   Inline styles set defaults; these selectors override on interaction.
+   ========================================================================= */
+
+/* Primary button (fills the step-through CTA, "See Your Verdict" etc.) */
+.nwra-scorp-calculator-root .nwra-sc-btn-primary:not(:disabled):hover {
+  background: var(--nwra-sc-navy) !important;
+}
+
+/* Secondary / "Back" + "Recalculate" buttons */
+.nwra-scorp-calculator-root .nwra-sc-btn-secondary:hover {
+  background: var(--nwra-sc-blue-soft) !important;
+  border-color: var(--nwra-sc-blue) !important;
+  color: var(--nwra-sc-navy) !important;
+}
+
+/* Chip buttons (filing status, quick-pick salary) */
+.nwra-scorp-calculator-root .nwra-sc-chip:hover {
+  background: var(--nwra-sc-blue-soft) !important;
+  border-color: var(--nwra-sc-blue) !important;
+  color: var(--nwra-sc-navy) !important;
+}
+
+/* Text input focus */
+.nwra-scorp-calculator-root .nwra-sc-input:focus {
+  border-color: var(--nwra-sc-blue) !important;
+}
+
+/* Keyboard focus-visible rings for accessibility */
+.nwra-scorp-calculator-root button:focus-visible,
+.nwra-scorp-calculator-root input:focus-visible,
+.nwra-scorp-calculator-root select:focus-visible {
+  outline: 2px solid var(--nwra-sc-blue);
+  outline-offset: 2px;
+}
+
+/* Disabled state */
+.nwra-scorp-calculator-root button:disabled {
+  cursor: not-allowed;
+}
+
+/* =========================================================================
+   Layout helpers
+   ========================================================================= */
+
+.nwra-scorp-calculator-root {
+  min-height: 0; /* never force full viewport inside a WP page */
+}
+
+/* Stack the side-by-side comparison columns on narrow screens */
+@media (max-width: 720px) {
+  .nwra-scorp-calculator-root [data-nwra-compare-grid] {
+    display: block !important;
+  }
+}
